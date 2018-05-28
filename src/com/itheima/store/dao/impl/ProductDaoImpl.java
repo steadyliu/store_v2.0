@@ -1,5 +1,6 @@
 package com.itheima.store.dao.impl;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -57,5 +58,35 @@ public class ProductDaoImpl implements ProductDao {
 		Product product = queryRunner.query(sql, new BeanHandler<Product>(Product.class), pid);
 		return product;
 	}
+
+	@Override
+	public Integer findcountAll() throws SQLException {
+		// TODO Auto-generated method stub
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "select count(*) from product ";
+		Long count = (Long) queryRunner.query(sql, new ScalarHandler());
+		return count.intValue();
+	}
+
+	@Override
+	public List<Product> finByPage(int begin, Integer pageSize) throws SQLException {
+		// TODO Auto-generated method stub
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "select * from product where 1=1 order by pdate desc limit ?,?";
+		List<Product> list = queryRunner.query(sql, new BeanListHandler<Product>(Product.class), begin,pageSize);
+		return list;
+	}
+
+	@Override
+	public void save(Product product) throws SQLException {
+		// TODO Auto-generated method stub
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "insert into product values(?,?,?,?,?,?,?,?,?,?) ";
+		Object[] params = { product.getPid(), product.getPname(), product.getMarket_price(), product.getShop_price(),
+				product.getPimage(), new Date(product.getPdate().getTime()), product.getIs_hot(), product.getPdesc(), product.getPflag(),
+				product.getCategory().getCid() };
+		queryRunner.update(sql, params);
+	}
+
 
 }

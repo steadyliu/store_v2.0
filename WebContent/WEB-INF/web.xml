@@ -120,4 +120,24 @@
     <servlet-name>AdminCategoryServlet</servlet-name>
     <url-pattern>/AdminCategoryServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminProductServlet</display-name>
+    <servlet-name>AdminProductServlet</servlet-name>
+    <servlet-class>com.itheima.store.web.servlet.AdminProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminProductServlet</servlet-name>
+    <url-pattern>/AdminProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddProductServlet</display-name>
+    <servlet-name>AddProductServlet</servlet-name>
+    <servlet-class>com.itheima.store.web.servlet.AddProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddProductServlet</servlet-name>
+    <url-pattern>/AddProductServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

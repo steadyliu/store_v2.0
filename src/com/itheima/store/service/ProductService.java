@@ -21,4 +21,8 @@ public interface ProductService {
 
 	Product findByPid(String pid)throws SQLException ;
 
+	PageBean<Product> findByPage(Integer currPage)throws SQLException ;
+
+	void save(Product product)throws SQLException ;
+
 }

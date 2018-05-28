@@ -1,4 +1,7 @@
 package com.itheima.store.domain;
+
+import java.util.Date;
+
 /**
  * 商品的实体:
  * @author admin
@@ -21,10 +24,10 @@ public class Product {
 	private Double market_price;
 	private Double shop_price;
 	private String pimage;
-	private String pdate;
+	private Date pdate;
 	private Integer is_hot;
 	private String pdesc;
-	private String pflag;
+	private Integer pflag;
 	// 一对多的关系在表中是通过外键的方式描述,开发语言是Java面向对象.
 	// Hibernate框架：ORM的DAO层框架 .ORM:Object-Relational Mapping  session.save(product);
 	private Category category;
@@ -59,10 +62,10 @@ public class Product {
 	public void setPimage(String pimage) {
 		this.pimage = pimage;
 	}
-	public String getPdate() {
+	public Date getPdate() {
 		return pdate;
 	}
-	public void setPdate(String pdate) {
+	public void setPdate(Date pdate) {
 		this.pdate = pdate;
 	}
 	public Integer getIs_hot() {
@@ -77,10 +80,10 @@ public class Product {
 	public void setPdesc(String pdesc) {
 		this.pdesc = pdesc;
 	}
-	public String getPflag() {
+	public Integer getPflag() {
 		return pflag;
 	}
-	public void setPflag(String pflag) {
+	public void setPflag(Integer pflag) {
 		this.pflag = pflag;
 	}
 	public Category getCategory() {
