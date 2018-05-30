@@ -25,4 +25,8 @@ public interface ProductService {
 
 	void save(Product product)throws SQLException ;
 
+	void update(Product product)throws SQLException ;
+
+	List<Product> findPushDown(Integer pflag)throws SQLException ;
+
 }

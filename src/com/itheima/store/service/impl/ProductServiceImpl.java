@@ -87,4 +87,18 @@ public class ProductServiceImpl implements ProductService {
 		productDao.save(product);
 	}
 
+	@Override
+	public void update(Product product) throws SQLException {
+		// TODO Auto-generated method stub
+		ProductDao productDao = (ProductDao) BeanFactory.getBean("productDao");
+		productDao.update(product);
+	}
+
+	@Override
+	public List<Product> findPushDown(Integer pflag) throws SQLException {
+		// TODO Auto-generated method stub
+		ProductDao productDao = (ProductDao)BeanFactory.getBean("productDao");
+		return productDao.finPushDown(pflag);
+	}
+
 }

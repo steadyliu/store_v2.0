@@ -72,8 +72,8 @@ public class ProductDaoImpl implements ProductDao {
 	public List<Product> finByPage(int begin, Integer pageSize) throws SQLException {
 		// TODO Auto-generated method stub
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
-		String sql = "select * from product where 1=1 order by pdate desc limit ?,?";
-		List<Product> list = queryRunner.query(sql, new BeanListHandler<Product>(Product.class), begin,pageSize);
+		String sql = "select * from product where pflag = ? order by pdate desc limit ?,?";
+		List<Product> list = queryRunner.query(sql, new BeanListHandler<Product>(Product.class), 0,begin,pageSize);
 		return list;
 	}
 
@@ -86,6 +86,26 @@ public class ProductDaoImpl implements ProductDao {
 				product.getPimage(), new Date(product.getPdate().getTime()), product.getIs_hot(), product.getPdesc(), product.getPflag(),
 				product.getCategory().getCid() };
 		queryRunner.update(sql, params);
+	}
+
+	@Override
+	public void update(Product product) throws SQLException {
+		// TODO Auto-generated method stub
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "update product set pname = ?,market_price=?,shop_price=?,pimage=?,is_hot=?,pdesc= ?,pflag=? where pid = ?";
+		Object[] params = { product.getPname(), product.getMarket_price(), product.getShop_price(),
+				product.getPimage(),product.getIs_hot(), product.getPdesc(), product.getPflag(),product.getPid()
+				 };
+		queryRunner.update(sql, params);
+		
+	}
+
+	@Override
+	public List<Product> finPushDown(Integer pflag) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql="select * from product where pflag=? order by pdate";
+		List<Product> list = queryRunner.query(sql, new BeanListHandler<Product>(Product.class), pflag);
+		return list;
 	}
 
 

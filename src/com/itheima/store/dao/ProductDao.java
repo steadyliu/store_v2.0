@@ -29,6 +29,10 @@ public interface ProductDao {
 
 	void save(Product product)throws SQLException ;
 
+	void update(Product product)throws SQLException ;
+
+	List<Product> finPushDown(Integer pflag)throws SQLException ;
+
 	
 	
 }
