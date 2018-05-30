@@ -63,7 +63,7 @@ public class ProductDaoImpl implements ProductDao {
 	public Integer findcountAll() throws SQLException {
 		// TODO Auto-generated method stub
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
-		String sql = "select count(*) from product ";
+		String sql = "select count(*) from product where pflag=0 ";
 		Long count = (Long) queryRunner.query(sql, new ScalarHandler());
 		return count.intValue();
 	}
