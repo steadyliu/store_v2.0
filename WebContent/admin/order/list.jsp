@@ -138,7 +138,7 @@
 												</c:if>
 													
 												<c:if test="${ o.state ==2 }">
-													<a href="${ pageContext.request.contextPath }/adminOrder_updateState.action?oid=${ o.oid}"><font color="blue">发货</font></a>
+													<a href="${ pageContext.request.contextPath }/AdminOrderServlet?method=send&oid=${ o.oid}"><font color="blue">发货</font></a>
 												</c:if>
 												<c:if test="${ o.state ==3 }">
 													等待确认收货

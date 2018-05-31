@@ -45,7 +45,7 @@ TH {
 							<td width="85%" align="left">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<font color="#000000"> <script language="JavaScript">
-<!--
+
 tmpDate = new Date();
 date = tmpDate.getDate();
 month= tmpDate.getMonth() + 1 ;
@@ -73,7 +73,7 @@ document.write(myArray[weekday])
 else
 {document.write(myArray[weekday])
 };
-// -->
+
 									</script> </font>
 							</td>
 							<td width="15%">
