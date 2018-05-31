@@ -1,6 +1,7 @@
 package com.itheima.store.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.itheima.store.domain.Order;
 import com.itheima.store.domain.PageBean;
@@ -19,5 +20,9 @@ public interface OrderService {
 	Order findByOid(String oid) throws Exception;
 
 	void update(Order order)throws Exception;
+
+	List<Order> findAll()throws Exception;
+
+	List<Order> findByState(String state)throws Exception;
 
 }

@@ -102,4 +102,22 @@ public class OrderDaoImpl implements OrderDao {
 		 queryRunner.update(sql, params);
 	}
 
+	@Override
+	public List<Order> findAll() throws Exception {
+		// TODO Auto-generated method stub
+		 QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		 String sql = "select * from orders";
+		 List<Order> list = queryRunner.query(sql, new BeanListHandler<Order>(Order.class))	;
+		 return list;
+	}
+
+	@Override
+	public List<Order> findByState(String state) throws Exception {
+		// TODO Auto-generated method stub
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql  = "select * from orders where state =?";
+		List<Order> list = queryRunner.query(sql, new BeanListHandler<Order>(Order.class), state);
+		return list;
+	}
+
 }
