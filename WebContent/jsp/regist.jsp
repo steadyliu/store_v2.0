@@ -51,6 +51,9 @@ font .regist {
  		});
  		
  	});
+ 	function changeImage(){
+ 		$("#imgCode").prop("src","${ pageContext.request.contextPath }/CheckImgServlet? time="+new Date().getTime());
+ 	}
  </script>
 </head>
 <body>
@@ -67,6 +70,7 @@ font .regist {
 		<font class="regist">会员注册</font>USER REGISTER
 		<form class="form-horizontal" style="margin-top:5px;" action="${ pageContext.request.contextPath }/UserServlet" method="post">
 			 <input type="hidden" name="method" value="regist">
+			 <span>${ msg }</span>
 			 <div class="form-group">
 			    <label for="username" class="col-sm-2 control-label">用户名</label>
 			    <div class="col-sm-6">
@@ -125,11 +129,11 @@ font .regist {
 			  <div class="form-group">
 			    <label for="date" class="col-sm-2 control-label">验证码</label>
 			    <div class="col-sm-3">
-			      <input type="text" class="form-control"  >
+			      <input type="text" class="form-control" name="code" value="${ user }"/ >
 			      
 			    </div>
 			    <div class="col-sm-2">
-			    <img src="./image/captcha.jhtml"/>
+			    <img id="imgCode" src="${ pageContext.request.contextPath }/CheckImgServlet" onclick="changeImage()"/>
 			    </div>
 			    
 			  </div>

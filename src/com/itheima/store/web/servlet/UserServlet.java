@@ -68,6 +68,16 @@ public class UserServlet extends BaseServlet {
 			User user = new User();
 			ConvertUtils.register(new MyDateConverter(), Date.class);
 			BeanUtils.populate(user, map);
+			req.setAttribute("user", user);
+			// 一次性验证码程序:
+			String code1 = req.getParameter("code");
+			String code2 = (String)req.getSession().getAttribute("code");
+			req.getSession().removeAttribute("code");
+			if(!code1.equalsIgnoreCase(code2)){
+				req.setAttribute("msg", "验证码输入错误!");
+				
+				return "/jsp/regist.jsp";
+			}
 			// 调用业务层:
 			UserService userService = (UserService) BeanFactory.getBean("userService");
 			userService.save(user);
