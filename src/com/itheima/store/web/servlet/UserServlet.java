@@ -48,7 +48,14 @@ public class UserServlet extends BaseServlet {
 				resp.getWriter().println("1");
 			}else{
 				// 用户名已经存在:
-				resp.getWriter().println("2");
+				//2.1判断用户是否被锁定了
+				String lock = existUser.getLock();
+				if(lock.equals("1")) {
+					resp.getWriter().println("3");
+				}else {
+					resp.getWriter().println("2");
+				}
+				
 			}
 		}catch(Exception e){
 			e.printStackTrace();

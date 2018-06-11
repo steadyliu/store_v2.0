@@ -150,4 +150,14 @@
     <servlet-name>AdminOrderServlet</servlet-name>
     <url-pattern>/AdminOrderServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminUserServlet</display-name>
+    <servlet-name>AdminUserServlet</servlet-name>
+    <servlet-class>com.itheima.store.web.servlet.AdminUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminUserServlet</servlet-name>
+    <url-pattern>/AdminUserServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

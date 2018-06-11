@@ -19,6 +19,24 @@
 		});
 	});
 </script>
+<script type="text/javascript">
+	$(function(){ 
+		$("#username").blur(function(){
+			var $value = $(this).val();
+		//	alert($value);
+ 			if($value != ""){
+ 				$.post("${ pageContext.request.contextPath }/UserServlet",{"method":"checkUsername","username":$value},function(data){
+ 	 				if(data == 3){
+ 	 					$("#s1").html("<font color='red'>您已被锁定</font>");
+ 	 					$("#btn1").attr("disabled",true);
+ 	 				}
+ 	 			});
+ 			}
+ 		});
+		});
+		
+
+</script>
 <style>
   body{
    margin-top:20px;
@@ -65,6 +83,8 @@ font {
       <input type="text" class="form-control" id="username" name="username" value="${ cookie.username.value } " placeholder="请输入用户名">
       
     </div>
+    <div class="col-sm-4" id="s1">
+    </div>
   </div>
    <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
@@ -96,7 +116,7 @@ font {
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-    <input type="submit"  width="100" value="登录" name="submit" border="0"
+    <input id="btn1" type="submit"  width="100" value="登录" name="submit" border="0"
     style="background: url('${pageContext.request.contextPath}/images/login.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     height:35px;width:100px;color:white;">
     </div>

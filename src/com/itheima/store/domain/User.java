@@ -30,6 +30,22 @@ public class User {
 	private String sex;
 	private Integer state;
 	private String code;
+	private String lock ;//0 表示未锁定 1 锁定
+	private Date create_time ;//用户注册的时间
+	
+	
+	public Date getCreate_time() {
+		return create_time;
+	}
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
+	}
+	public String getLock() {
+		return lock;
+	}
+	public void setLock(String lock) {
+		this.lock = lock;
+	}
 	public String getUid() {
 		return uid;
 	}
@@ -90,5 +106,12 @@ public class User {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", username=" + username + ", password=" + password + ", name=" + name + ", email="
+				+ email + ", telephone=" + telephone + ", birthday=" + birthday + ", sex=" + sex + ", state=" + state
+				+ ", code=" + code + ", lock=" + lock + ", create_time=" + create_time + "]";
+	}
+	
 	
 }
